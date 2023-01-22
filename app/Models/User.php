@@ -25,6 +25,7 @@ class User extends Authenticatable
         'board_id',
         'dob',
         'number',
+        'standard',
         'is_verified'
     ];
 

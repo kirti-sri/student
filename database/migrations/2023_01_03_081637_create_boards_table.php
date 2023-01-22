@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('boards', function (Blueprint $table) {
-            $table->integer('student_id');
-            $table->string('board_name');
+            $table->string('name');
             $table->integer('standard');
         });
     }
@@ -30,4 +29,3 @@ return new class extends Migration
         Schema::dropIfExists('boards');
     }
 };
-

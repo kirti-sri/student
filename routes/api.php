@@ -31,7 +31,9 @@ Route::post('/otp-verify',[TwilioSMSController::class,'verify_otp']);
 
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/show-student-details/{id}', [DashboardController::class,'show']);
+    Route::get('/get-student-details/{id}', [DashboardController::class,'show']);
+    Route::post('onboarding',[DashboardController::class,'onboarding_user']);
+    
 });
 
 Route::prefix('admin')->group(function () {

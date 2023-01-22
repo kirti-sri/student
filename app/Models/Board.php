@@ -11,11 +11,10 @@ class Board extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'board_name',
-        'student_id',
+        'name',
         'standard'
     ];
-    public $timestamps = false;
+    
     public function subject()
     {
         return $this->belongsTo(Subject::class);
