@@ -25,14 +25,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/otp', [StudentController::class,'otpgeneration']);
 Route::post('/register', [TwilioSMSController::class, 'index']);
-Route::post('/login', [LoginController::class,'login']);
+Route::post('/otp-verify',[TwilioSMSController::class,'verify_otp']);
+// Route::post('/login', [LoginController::class,'login']);
 
-Route::get('/dashboard/{id}', [DashboardController::class,'show']);
-Route::post('/board', [BoardController::class,'store']);
 
-Route::post('/add-quizz',[QuizzController::class,'add_quizz']);
-Route::post('/add-question-to-quizz',[QuizzController::class,'add_question_to_quizz']);
-Route::get('/show-quizz/{id}',[QuizzController::class,'get_quizz_questions']);
-Route::post('/verify-quizz',[AnswerController::class,'validate_answers']);
+Route::prefix('dashboard')->group(function () {
+    Route::get('/show-student-details/{id}', [DashboardController::class,'show']);
+});
+
+Route::prefix('admin')->group(function () {
+    Route::post('/board', [BoardController::class,'store']);
+    Route::post('/add-quizz',[QuizzController::class,'add_quizz']);
+    Route::post('/add-question-to-quizz',[QuizzController::class,'add_question_to_quizz']);
+    Route::get('/show-quizz/{id}',[QuizzController::class,'get_quizz_questions']);
+    Route::post('/verify-quizz',[AnswerController::class,'validate_answers']);
+});

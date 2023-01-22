@@ -58,6 +58,10 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+    'twilio_sid' => env('TWILIO_SID'),
+    'twilio_token' => env('TWILIO_TOKEN'),
+    'twilio_from' => env('TWILIO_FROM'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

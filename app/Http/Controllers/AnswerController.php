@@ -14,7 +14,7 @@ class AnswerController extends Controller
     //quizz_id
     //user_id
     //time_taken
-    //question_id => 
+    //question_id =>
     public function validate_answers(Request $request)
     {
         $response = array();
