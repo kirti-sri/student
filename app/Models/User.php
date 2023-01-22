@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'board_id',
+        'dob',
+        'number',
+        'standard',
+        'is_verified'
     ];
 
     /**

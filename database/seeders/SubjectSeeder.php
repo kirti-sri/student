@@ -11,30 +11,29 @@ class SubjectSeeder extends Seeder
     public function run()
     {
         DB::table('subjects')->insert([
-            'standard'=>9,
-            'subject_id'=>1,
-            'subject_name'=>'Mathematics'
+            'standard' => 9,
+            'board_id' => 1,
+            'name' => 'Mathematics'
         ]);
         DB::table('subjects')->insert([
-            'standard'=>9,
-            'subject_id'=>2,
-            'subject_name'=>'Biology'
+            'standard' => 9,
+            'board_id' => 1,
+            'name' => 'Biology'
         ]);
         DB::table('subjects')->insert([
-            'standard'=>9,
-            'subject_id'=>3,
-            'subject_name'=>'Chemistry'
+            'standard' => 5,
+            'board_id' => 2,
+            'name' => 'Chemistry'
         ]);
         DB::table('subjects')->insert([
-            'standard'=>9,
-            'subject_id'=>4,
-            'subject_name'=>'Geography'
+            'standard' => 5,
+            'board_id' => 2,
+            'name' => 'Geography'
         ]);
         DB::table('subjects')->insert([
-            'standard'=>9,
-            'subject_id'=>5,
-            'subject_name'=>'Physics'
+            'standard' => 12,
+            'board_id' => 4,
+            'name' => 'Physics'
         ]);
-        
     }
 }
