@@ -9,7 +9,7 @@ use App\Models\Question;
 class QuizzController extends Controller
 {
     public function add_quizz(Request $request )
-    {   
+    {
         $response = array();
         $quizz = new Quizz();
 
@@ -30,9 +30,10 @@ class QuizzController extends Controller
         $response = array();
         // dd($request->option_d);
         $quizz = Quizz::find($request->quizz_id);
+        // dd($quizz);
         $question = new Question();
-        
-        $question->quizz_id =  $request->quizz_id;
+
+        $question->quizz_id =  $quizz->id;
         $question->description =  $request->description;
         $question->option_a =  $request->option_a;
         $question->option_b =  $request->option_b;
@@ -50,6 +51,18 @@ class QuizzController extends Controller
     }
 
 
+    public function get_quizz_questions($id)
+    {
+        $response = array();
+
+        $questions = Question::where('id',$id)->get();
+
+        $response['code'] = 200;
+        $response['data'] = $questions;
+
+        return response()->json($response);
+
+    }
     public function update_quiz_question(Request $request)
     {
         $question = Question::find($request->question_id);
@@ -57,7 +70,7 @@ class QuizzController extends Controller
         {
             $response['code'] = 200;
             $response['message'] = 'No question found with the given id';
-            
+
         } else {
             $question->description =  $request->description;
             $question->option_a =  $request->option_a;
@@ -66,9 +79,9 @@ class QuizzController extends Controller
             $question->option_d =  $request->option_d;
             $question->correct_option = $request->correct_option;
             $question->update();
-    
+
             $response['code'] = 200;
-            $response['message'] = 'Question added for the quizz: '. $quizz->title;
+            // $response['message'] = 'Question added for the quizz: '. $quizz->title;
             $response['data'] = $question;
 
         }
@@ -78,5 +91,5 @@ class QuizzController extends Controller
 
 
 
-    
+
 }

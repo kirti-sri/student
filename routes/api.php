@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TwilioSMSController;
@@ -28,8 +29,10 @@ Route::get('/otp', [StudentController::class,'otpgeneration']);
 Route::post('/register', [TwilioSMSController::class, 'index']);
 Route::post('/login', [LoginController::class,'login']);
 
-Route::get('/dashboard/{id}', [DashboardController::class,'show']); 
+Route::get('/dashboard/{id}', [DashboardController::class,'show']);
 Route::post('/board', [BoardController::class,'store']);
 
 Route::post('/add-quizz',[QuizzController::class,'add_quizz']);
 Route::post('/add-question-to-quizz',[QuizzController::class,'add_question_to_quizz']);
+Route::get('/show-quizz/{id}',[QuizzController::class,'get_quizz_questions']);
+Route::post('/verify-quizz',[AnswerController::class,'validate_answers']);

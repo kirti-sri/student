@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,12 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->integer('quizz_id');
+            $table->integer('result_id');
             $table->integer('user_id');
-            $table->string('total_score')->nullable();
-            $table->string('time_taken');
+            $table->integer('question_id');
+            $table->string('answer');
+            $table->boolean('is_correct');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('answers');
     }
 };
