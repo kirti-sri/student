@@ -15,6 +15,8 @@ class Board extends Model
         'standard'
     ];
     
+    public $timestamps = false;
+    
     public function subject()
     {
         return $this->belongsTo(Subject::class);

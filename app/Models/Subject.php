@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Models;
@@ -13,4 +12,8 @@ class Subject extends Model
         'name',
         'board_id'
     ];
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class);
+    }
 }
