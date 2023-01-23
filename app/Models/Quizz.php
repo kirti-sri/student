@@ -16,5 +16,8 @@ class Quizz extends Model
         'chapter_id',
     ];
 
+    protected $hidden =[
+        'correct_option'
+    ];
 
 }

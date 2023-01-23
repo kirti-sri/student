@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Otp extends Model
+class Video extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'otp_number',
-        'email',
-        'number',
+    protected $fillable =[
+        'video_id',
+        'topic_id',
+        'video'
     ];
+    protected $primaryKey = 'video_id';
 }

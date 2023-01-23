@@ -21,17 +21,17 @@ class SubjectSeeder extends Seeder
             'name' => 'Biology'
         ]);
         DB::table('subjects')->insert([
-            'standard' => 5,
+            'standard' => 9,
             'board_id' => 2,
             'name' => 'Chemistry'
         ]);
         DB::table('subjects')->insert([
-            'standard' => 5,
+            'standard' => 9,
             'board_id' => 2,
             'name' => 'Geography'
         ]);
         DB::table('subjects')->insert([
-            'standard' => 12,
+            'standard' => 9,
             'board_id' => 4,
             'name' => 'Physics'
         ]);

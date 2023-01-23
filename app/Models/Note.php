@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Otp extends Model
+class Note extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'otp_number',
-        'email',
-        'number',
+    protected $fillable =[
+        'topic_id',
+        'notes'
     ];
 }
