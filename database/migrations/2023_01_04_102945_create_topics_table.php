@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('chap_id');
             $table->string('name');
-            $table->timestaps();
+            $table->timestamps();
         });
     }
 

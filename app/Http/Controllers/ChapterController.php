@@ -12,11 +12,8 @@ class ChapterController extends Controller
     public function get_chapters($subject_id)
     {
         $response = array();
-        $subject = Subject::where('id',$subject_id)->first();
-        $chapters = $subject->chapters();
-
-        
-        $chapters = Chapter::where('id',$id)->get();
+        $subject = Subject::find($subject_id);
+        $chapters = $subject->chapters()->get();
 
         $response['code'] = 200;
         $response['message'] = $chapters;

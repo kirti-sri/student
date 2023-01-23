@@ -36,40 +36,35 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/register', [TwilioSMSController::class, 'index']);
-Route::post('/otp-verify',[TwilioSMSController::class,'verify_otp']);
+Route::post('/otp-verify', [TwilioSMSController::class, 'verify_otp']);
 
 
 
-Route::get('/get-student-details/{id}', [DashboardController::class,'show']);
-Route::post('/onboarding',[DashboardController::class,'onboarding_user']);
-    
+// Route::get('/get-student-details/{id}', [DashboardController::class, 'show']);
+// Route::post('/onboarding', [DashboardController::class, 'onboarding_user']);
+// Route::post('/board', [BoardController::class, 'store']);
 
-
-
-Route::post('/board', [BoardController::class,'store']);
-Route::get('/dashboard/{id}/{subject_id}', [ChapterController::class,'view']);
-Route::get('/dashboard/{id}/{subject_id}/{chap_id}', [TopicController::class,'watch']);
-Route::get('note/{Note_id}', [NoteController::class,'note']);
-Route::get('video/{video_id}', [VideoController::class,'video']);
-Route::get('practice/{student_id}', [PracticeController::class,'practice']);
-Route::get('/profile/{id}', [ProfileController::class,'profile']);
-Route::get('/practice/chapter/{id}', [Practice_chapterController::class,'chap']);
+Route::get('practice/{student_id}', [PracticeController::class, 'practice']);
+// Route::get('/profile/{id}', [ProfileController::class, 'profile']);
+Route::get('/practice/chapter/{id}', [Practice_chapterController::class, 'chap']);
 
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/get-student-details/{id}', [DashboardController::class,'show']);
-    Route::post('onboarding',[DashboardController::class,'onboarding_user']);
+    Route::get('/get-student-details/{id}', [DashboardController::class, 'get_student_details']);
+    Route::post('onboarding', [DashboardController::class, 'onboarding_user']);
 
-    Route::get('/show-quizz/{id}',[QuizzController::class,'get_quizz_questions']);
-    Route::post('/verify-quizz',[AnswerController::class,'validate_answers']);
+    Route::get('/show-quizz/{id}', [QuizzController::class, 'get_quizz_questions']);
+    Route::post('/verify-quizz', [AnswerController::class, 'validate_answers']);
 
-    Route::get('/show-chapters/{subject_id}',[ChapterController::class,'get_chapters']);
-    Route::get('/show-topics/{chapter_id}',[TopicController::class,'get_topics']);
+    Route::get('/show-chapters/{subject_id}', [ChapterController::class, 'get_chapters']);
+    Route::get('/show-topics/{chapter_id}', [TopicController::class, 'get_topics']);
 
-    
+    Route::get('note/{topic_id}', [NoteController::class, 'get_notes']);
+    Route::get('video/{topic_id}', [VideoController::class, 'get_video']);
+
+    Route::get('profile/{student_id}',[ProfileController::class,'profile']);
 });
 
 
-Route::post('/add-quizz',[QuizzController::class,'add_quizz']);
-Route::post('/add-question-to-quizz',[QuizzController::class,'add_question_to_quizz']);
-
+Route::post('/add-quizz', [QuizzController::class, 'add_quizz']);
+Route::post('/add-question-to-quizz', [QuizzController::class, 'add_question_to_quizz']);

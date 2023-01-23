@@ -17,8 +17,8 @@ class Board extends Model
     
     public $timestamps = false;
     
-    public function subject()
+    public function subjects()
     {
-        return $this->belongsTo(Subject::class);
+        return $this->hasMany(Subject::class,'board_id');
     }
 }

@@ -22,7 +22,7 @@ class Student extends Model
         'otp'
     ];
     public function board()
-{
-    return $this->belongsTo(Board::class);
-}
+    {
+        return $this->belongsTo(Board::class);
+    }
 }

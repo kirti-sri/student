@@ -5,18 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Board;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function show($student_id)
+    public function get_student_details($student_id)
     {
-        return DB::table('students')
-            ->select('students.student_id', 'students.name', 'boards.standard', 'subjects.name')
-            ->join('boards', 'students.student_id', '=', ' boards.id')
-            ->join('subjects', 'boards.standard', '=', 'subjects.standard')
-            ->get();
+        $student = User::find($student_id);
+      
+        $subjects = Subject::where('board_id', $student->board_id)->where('standard', $student->standard)->get();
+        if (!$student) {
+            $response['code'] = 404;
+            $response['message'] = 'No user found with the requested ID';
+        } else {
+            $response['code'] = 200;
+            $response['data'] = [
+                'student' => $student,
+                'subjects' => $subjects
+            ];
+        }
+        
+        return response()->json($response);
     }
 
     public function onboarding_user(Request $request)
@@ -44,6 +55,5 @@ class DashboardController extends Controller
         }
 
         return response()->json($response);
-
     }
 }

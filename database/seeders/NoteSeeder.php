@@ -11,12 +11,10 @@ class noteseeder extends Seeder
     public function run()
     {
         DB::table('notes')->insert([
-            'topic_id'=>1,
-            'notes_id'=>1,
-            'notes'=>'Trigonometry, the branch of mathematics concerned with specific functions of angles 
+            'topic_id' => 1,
+            'notes' => 'Trigonometry, the branch of mathematics concerned with specific functions of angles 
             and their application to calculations. There are six functions of an angle commonly used in 
             trigonometry.'
         ]);
-        
     }
 }

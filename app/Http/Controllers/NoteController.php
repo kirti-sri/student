@@ -9,8 +9,15 @@ use App\Models\Note;
 
 class NoteController extends Controller
 {
-    public function note($topic_id)
-    {
-        return $notes = Note::where('topic_id',$topic_id)->get();
+    public function get_notes($topic_id)
+    {   
+        $response = array();
+
+        $notes = Note::where('topic_id',$topic_id)->get();
+
+        $response['code'] = 200;
+        $response['data'] = $notes;
+        
+        return response()->json($response);
     }
 }
